@@ -1,7 +1,7 @@
-package com.example.a45myapplication.data.repository.di
+package com.example.a45myapplication.di
 
 import com.example.a45myapplication.common.Constant
-import com.example.a45myapplication.data.remote.MealPaprikaAPI
+import com.example.a45myapplication.data.remote.MealApi
 import com.example.a45myapplication.domain.repository.MealsRepository
 import com.example.a45myapplication.domain.repository.MealsRepositoryImpl
 import dagger.Module
@@ -15,19 +15,20 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
     @Provides
     @Singleton
-    fun providePaprikaApi():MealPaprikaAPI{
+    fun providePaprikaApi(): MealApi {
         return Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(MealPaprikaAPI::class.java)
+            .create(MealApi::class.java)
     }
     @Provides
     @Singleton
-    fun provideMealRepository(api: MealPaprikaAPI): MealsRepository{
-        return MealsRepositoryImpl(api )
+    fun provideMealRepository(api: MealApi): MealsRepository{
+        return MealsRepositoryImpl(api)
     }
 
 

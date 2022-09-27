@@ -5,7 +5,7 @@ import com.example.a45myapplication.data.remote.dto.MealDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface MealPaprikaAPI {
+interface MealApi {
     @GET("/search?")
     suspend fun getMeals(@Query("q") q : String?) : MealDto
     @GET("/get?")

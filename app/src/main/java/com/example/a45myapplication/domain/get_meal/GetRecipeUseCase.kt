@@ -1,6 +1,6 @@
 package com.example.a45myapplication.domain.get_meal
 
-import com.example.a45myapplication.common.Resourcce
+import com.example.a45myapplication.common.Resource
 import com.example.a45myapplication.data.remote.dto.DetailMeal
 import com.example.a45myapplication.domain.repository.MealsRepository
 import kotlinx.coroutines.flow.Flow
@@ -12,15 +12,15 @@ import javax.inject.Inject
 class GetRecipeUseCase @Inject constructor(
     private val repository : MealsRepository
 ) {
-    operator fun invoke(rId : Int) : Flow<Resourcce<DetailMeal>> = flow{
+    operator fun invoke(rId : Int) : Flow<Resource<DetailMeal>> = flow{
         try{
-            emit(Resourcce.Loading())
+            emit(Resource.Loading())
             val meal = repository.getRecipe(rId)
-            emit(Resourcce.Success(meal))
+            emit(Resource.Success(meal))
         }catch (e: HttpException){
-            emit(Resourcce.Error(e.localizedMessage ?:"An unexpected error occured"))
+            emit(Resource.Error(e.localizedMessage ?:"An unexpected error occured"))
         }catch (e: IOException){
-            emit(Resourcce.Error("Couldn't reach server. Check your internet connection"))
+            emit(Resource.Error("Couldn't reach server. Check your internet connection"))
         }
 
 

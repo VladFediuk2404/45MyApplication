@@ -11,10 +11,10 @@ android {
     buildFeatures {
         viewBinding true
     }
-    namespace 'com.example.a45application'
+    namespace 'com.example.a45myapplication'
 
     defaultConfig {
-        applicationId "com.example.a45application"
+        applicationId "com.example.a45myapplication"
         minSdk 21
         targetSdk 33
         versionCode 1

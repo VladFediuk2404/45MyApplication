@@ -1,12 +1,12 @@
 package com.example.a45myapplication.domain.repository
 
-import com.example.a45myapplication.data.remote.MealPaprikaAPI
+import com.example.a45myapplication.data.remote.MealApi
 import com.example.a45myapplication.data.remote.dto.DetailMeal
 import com.example.a45myapplication.data.remote.dto.MealDto
 import javax.inject.Inject
 
 class MealsRepositoryImpl @Inject constructor(
-    private val api: MealPaprikaAPI
+    private val api: MealApi
 ): MealsRepository {
     override suspend fun getMeals(query: String): MealDto {
         return api.getMeals(query)
