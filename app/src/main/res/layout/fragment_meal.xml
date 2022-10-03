@@ -5,10 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".presentation.coin_list.fragment.MealFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/TextViewFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:text="Click to get recipes!" />
+
 
 </FrameLayout>
