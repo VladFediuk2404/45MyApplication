@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.example.a45myapplication.common.Resource
+import com.example.a45myapplication.common.collectLifecycleFlow
 import com.example.a45myapplication.databinding.FragmentMealBinding
 import com.example.a45myapplication.presentation.coin_list.MealListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,10 +31,24 @@ class MealFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observerGetMeals()
 
-        // todo тут код писать
 
     }
+    private fun observerGetMeals(){
+        collectLifecycleFlow(viewModel.getMealsResult) {
+            when(it) {
+                is Resource.Success ->  {
+                }
+
+                is Resource.Error ->  {
+                }
+                is Resource.Loading ->  {
+                }
+            }
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
